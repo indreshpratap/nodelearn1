@@ -70,19 +70,22 @@ fs.readFile(filepath, {
 }); 
 */
 var dirpath = "/Users/indresh/Desktop/Screenshots";
-fs.readdir(dirpath,function(err,files){
-    if(err) {
-        console.error(err); 
-    }else {
-       
-        for(let file of files){
-            fs.stat(path.join(dirpath,file),function(err,stats){
-                if(stats.isDirectory()){
+fs.readdir(dirpath, function (err, files) {
+    if (err) {
+        console.error(err);
+    } else {
+
+        for (let file of files) {
+            fs.stat(path.join(dirpath, file), function (err, stats) {
+                if (stats.isDirectory()) {
                     console.log(file, " is directory");
-                }else {
-                    console.log(file," Simple file");
+                } else {
+                    console.log(file, " Simple file");
                 }
             });
         }
     }
 });
+
+//fs.unlink // to remove a file or folder, note if folder not empty then it will throw error
+//fs.rename // rename file and folder 
